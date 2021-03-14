@@ -8,9 +8,9 @@ const redisOptions = {
   url: 'redis://127.0.0.1:6379/0',
 };
 
-let client = redis.createClient(redisOptions);
-let asyncGet = util.promisify(client.get).bind(client);
-let asyncSet = util.promisify(client.mset).bind(client);
+let client;
+let asyncGet;
+let asyncSet;
 
 if (process.env.DEV) {
   client = redis.createClient(redisOptions);
